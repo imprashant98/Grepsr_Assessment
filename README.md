@@ -1,47 +1,30 @@
-### Setup and Testing Instructions
+### Updated Setup and Testing Instructions Using Swagger UI
 
 #### Step-by-Step Setup
 
 1. **Clone the Repository**:
 
    ```sh
-   git clone <repository-url>
-   cd <repository-directory>
+   git clone (https://github.com/imprashant98/Grepsr_Assessment)
+   cd Grepsr_Assessment
    ```
 
 2. **Install Dependencies**:
 
    ```sh
-   pip install fastapi uvicorn transformers torch pydantic
+   pip install -r requirements.txt
    ```
 
 3. **Run the Application**:
+
    ```sh
    uvicorn main:app --reload
    ```
 
-#### Testing the API
+4. **Access Swagger UI**:
+   - Open a web browser and navigate to `http://127.0.0.1:8000/docs` to access the Swagger UI provided by FastAPI.
 
-- **Using Curl**:
-
-  ```sh
-  curl -X POST "http://127.0.0.1:8000/extract_attributes" -H "Content-Type: application/json" -d '{"html_content": "<div><h1 class=\"product-title\">Example Product</h1><p class=\"price\">$19.99</p><p class=\"description\">This is a great product.</p></div>"}'
-  ```
-
-- **Using Postman**:
-  1. Open Postman.
-  2. Set the request type to `POST`.
-  3. Set the URL to `http://127.0.0.1:8000/extract_attributes`.
-  4. In the "Body" tab, select "raw" and set the type to `JSON`.
-  5. Enter the following JSON in the body:
-     ```json
-     {
-       "html_content": "<div><h1 class=\"product-title\">Example Product</h1><p class=\"price\">$19.99</p><p class=\"description\">This is a great product.</p></div>"
-     }
-     ```
-  6. Click "Send" to make the request.
-
-#### Example Input and Output
+#### Example Input and Output Using Swagger UI
 
 **Input HTML Block**:
 
@@ -64,4 +47,4 @@
 }
 ```
 
-This output indicates that the API has successfully extracted the relevant e-commerce attributes ("Product Name", "Price", "Description") from the HTML content and generated corresponding CSS selectors for these attributes. These selectors can be used to identify and manipulate the respective HTML elements in further processing steps.
+This code sets up a FastAPI application that uses the `google/flan-t5-large` model to extract attributes from HTML content. The Swagger UI provided by FastAPI at `http://127.0.0.1:8000/docs` can be used to test the `/extract_attributes` endpoint by providing the HTML content and receiving the extracted attributes and their corresponding CSS selectors.
